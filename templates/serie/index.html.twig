@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'serie_index' %}
+
+
+{% block main %}
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Saisons</th>
+                <th scope="col">Etat</th>
+                <th scope="col">Recommandation</th>
+            </tr>
+        </thead>
+        {% for serie in listeDeSeries %}
+            <article class="post">
+                {#<h2>#}
+                    {#<a href="{{ path('blog_post', {slug: post.slug}) }}">#}
+                        {#{{ post.title }}#}
+                        {#<h1>Robert</h1>#}
+                    {#</a>#}
+                {#</h2>#}
+
+                {#<p class="post-metadata">#}
+                    {#<span class="metadata"><i class="fa fa-calendar"></i> {{ post.publishedAt|localizeddate('long', 'medium', null, 'UTC') }}</span>#}
+                    {#<span class="metadata"><i class="fa fa-user"></i> {{ post.author.fullName }}</span>#}
+                {#</p>#}
+
+
+
+                <tr>
+
+                    <td>{{ serie.nom }}</td>
+                    <td>{{ serie.saisons }}</td>
+                    <td>{{ serie.etat }}</td>
+                    <td>{{ serie.recommandation }}</td>
+
+                </tr>
+
+
+
+            </article>
+        {% else %}
+            <div class="well">Aucune série trouvée</div>
+        {% endfor %}
+    </table>
+
+    {#{% if series.haveToPaginate %}#}
+        {#<div class="navigation text-center">#}
+            {#{{ pagerfanta(series, 'twitter_bootstrap3_translated', {routeName: 'serie_index_paginated', routeParams: app.request.query.all}) }}#}
+        {#</div>#}
+    {#{% endif %}#}
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+    {{ include('serie/_rss.html.twig') }}
+{% endblock %}
