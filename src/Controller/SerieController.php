@@ -57,7 +57,7 @@ class SerieController extends AbstractController
     }
 
     /**
-     * @Route("/posts/{slug}", methods={"GET"}, name="blog_post")
+     * @Route("/serie/{id}", methods={"GET"}, name="serie_show")
      *
      * NOTE: The $post controller argument is automatically injected by Symfony
      * after performing a database query looking for a Post with the 'slug'
@@ -73,7 +73,7 @@ class SerieController extends AbstractController
         //
         // dump($post, $this->getUser(), new \DateTime());
 
-        return $this->render('blog/serie_show.html.twig', ['serie' => $serie]);
+        return $this->render('/serie/serie_show.html.twig', ['serie' => $serie]);
     }
 
     /**
@@ -141,26 +141,25 @@ class SerieController extends AbstractController
 //    }
 
     /**
-     * @Route("/search", methods={"GET"}, name="blog_search")
+     * @Route("/search", methods={"GET"}, name="serie_search")
      */
-    public function search(Request $request, SerieRepository $posts): Response
+    public function search(Request $request, SerieRepository $series): Response
     {
         if (!$request->isXmlHttpRequest()) {
-            return $this->render('blog/search.html.twig');
+            return $this->render('serie/search.html.twig');
         }
 
         $query = $request->query->get('q', '');
         $limit = $request->query->get('l', 10);
-        $foundPosts = $posts->findBySearchQuery($query, $limit);
+        $foundSeries = $series->findBySearchQuery($query, $limit);
 
         $results = [];
-        foreach ($foundPosts as $post) {
+        foreach ($foundSeries as $laSerie) {
             $results[] = [
-                'title' => htmlspecialchars($post->getTitle(), ENT_COMPAT | ENT_HTML5),
-                'date' => $post->getPublishedAt()->format('M d, Y'),
-                'author' => htmlspecialchars($post->getAuthor()->getFullName(), ENT_COMPAT | ENT_HTML5),
-                'summary' => htmlspecialchars($post->getSummary(), ENT_COMPAT | ENT_HTML5),
-                'url' => $this->generateUrl('blog_post', ['slug' => $post->getSlug()]),
+                'title' => htmlspecialchars($laSerie->getNom(), ENT_COMPAT | ENT_HTML5),
+                'summary' => htmlspecialchars($laSerie->getSaisons(), ENT_COMPAT | ENT_HTML5),
+                'author' => htmlspecialchars($laSerie->getAuthor()->getFullName(), ENT_COMPAT | ENT_HTML5),
+//                'url' => $this->generateUrl('blog_post', ['slug' => $laSerie->getId()]),
             ];
         }
 

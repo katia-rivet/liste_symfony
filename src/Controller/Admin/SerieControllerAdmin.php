@@ -12,10 +12,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Serie;
+use App\Entity\ImageSerie;
 use App\Form\SerieType;
 use App\Repository\SerieRepository;
 use App\Security\PostVoter;
 use App\Utils\Slugger;
+use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -38,7 +40,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-class SerieController extends AbstractController
+class SerieControllerAdmin extends AbstractController
 {
     /**
      * Lists all Post entities.
@@ -85,6 +87,8 @@ class SerieController extends AbstractController
         // See https://symfony.com/doc/current/best_practices/forms.html#handling-form-submits
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $serie->setAuthor($this->getUser());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($serie);
             $em->flush();
@@ -125,6 +129,26 @@ class SerieController extends AbstractController
         ]);
     }
 
+
+    private function enregistrerImages($formulaire, Serie $serie){
+        $dossierImages = 'images';
+        $listeFichiers = $formulaire['listeImages']->getData();
+        $serie->setListeImages(new ArrayCollection());
+        foreach($listeFichiers as $fichier){
+            $nomFichier = $fichier->getClientOriginalName();
+            $fichier->move($dossierImages, $nomFichier);
+            $nouvelleImage = new ImageSerie();
+            $nouvelleImage->setCheminFichier($nomFichier);
+            $nouvelleImage->setSerie($serie);
+            $serie->getListeImages()->add($nouvelleImage) ;
+            $this->getDoctrine()->getManager()->persist($nouvelleImage);
+        }
+    }
+
+
+
+
+
     /**
      * Displays a form to edit an existing Post entity.
      *
@@ -136,6 +160,12 @@ class SerieController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+        $this->enregistrerImages($form, $serie);
+
+
+
+
 
             $this->getDoctrine()->getManager()->flush();
 

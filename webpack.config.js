@@ -15,6 +15,7 @@ Encore
     .addEntry('login', './assets/js/login.js')
     .addEntry('admin', './assets/js/admin.js')
     .addEntry('search', './assets/js/search.js')
+    // .addStyleEntry('app', './assets/scss/app.scss')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
 ;

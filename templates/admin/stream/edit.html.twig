@@ -1,0 +1,14 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body_id 'stream_edit' %}
+
+{% block main %}
+    <h1>{{ 'Modifier site'|trans({'%id%': stream.id}) }}</h1>
+
+    {{ include('stream/_form.html.twig', {
+        form: form,
+        button_label: 'sauvegarder'|trans,
+        include_back_to_home_link: true,
+    }, with_context = false) }}
+{% endblock %}
+

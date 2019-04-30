@@ -3,16 +3,17 @@
 // see https://github.com/thomaspark/bootswatch/issues/55#issuecomment-298093182
 $web-font-path: 'data:text/css;base64,';
 
-@import "~bootswatch/flatly/variables";
+@import "~bootswatch/cosmo/variables";
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
-@import "~bootswatch/flatly/bootswatch";
+@import "~bootswatch/cosmo/bootswatch";
 @import "~font-awesome/scss/font-awesome.scss";
 @import "~highlight.js/styles/solarized-light.css";
 
 // pick the Lato fonts individually to avoid importing the entire font family
 @import '~lato-font/scss/public-api';
-@include lato-include-font('normal');
-@include lato-include-font('bold');
+//@include lato-include-font('normal');
+//@include lato-include-font('bold');
 
 /* Basic styles
    ------------------------------------------------------------------------- */
@@ -22,7 +23,7 @@ p, ul, ol {
 }
 
 li {
-  margin-bottom: 0.5em
+  margin-bottom: 0.4em
 }
 
 code {
@@ -331,4 +332,16 @@ body#blog_search article.post {
 body#blog_search .post-metadata {
   font-size: 16px;
   margin-bottom: 8px;
+}
+
+
+
+
+
+a{
+  color: darkred;
+}
+
+a:hover{
+  color: black;
 }

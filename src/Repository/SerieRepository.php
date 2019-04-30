@@ -42,6 +42,7 @@ class SerieRepository extends ServiceEntityRepository
             ->addSelect('p');
 
 
+
         return $this->createPaginator($qb->getQuery(), $page);
     }
 
@@ -70,7 +71,7 @@ class SerieRepository extends ServiceEntityRepository
 
         foreach ($searchTerms as $key => $term) {
             $queryBuilder
-                ->orWhere('p.serie LIKE :t_'.$key)
+                ->orWhere('p.nom LIKE :t_'.$key)
                 ->setParameter('t_'.$key, '%'.$term.'%')
             ;
         }

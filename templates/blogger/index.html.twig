@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BloggerController!{% endblock %}
+
+
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/projet2/demo/src/Controller/BloggerController.php'|file_link(0) }}">src/Controller/BloggerController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/projet2/demo/templates/blogger/index.html.twig'|file_link(0) }}">templates/blogger/index.html.twig</a></code></li>
+    </ul>
+</div>
+
+
+
+
+
+    <div class="container ">
+        <div class="row d-flex">
+            <div class="row order-3 order-md-1">
+                <div class="col-sm-6  col-md-4 py-3">
+                    <img src="http://lorempixel.com/400/200/" class="taille" alt="">
+                </div>
+                <div class="col-sm-6  col-md-4 py-3">
+                    <img src="http://lorempixel.com/400/200/" class="taille" alt="">
+                </div>
+                <div class="col-sm-12 col-md-4 py-3">
+                    <img src="http://lorempixel.com/400/200/" class="taille" alt="">
+                </div>
+            </div>
+
+
+
+            <div class="row order-4 order-md-2">
+                <div class="col-sm-12 col-md-6 py-3">
+                    <img src="http://lorempixel.com/600/200/" class="taille" alt="">
+                </div>
+                <div class="col-sm-12 col-md-6 py-3">
+                    <img src="http://lorempixel.com/600/200/" class="taille" alt="">
+                </div>
+            </div>
+
+
+
+            <div class="row order-2 order-md-3">
+                <div class="col py-3">
+                    <img src="http://lorempixel.com/1200/200/" class="taille" alt="">
+                </div>
+            </div>
+
+
+
+
+
+            <div class="row order-5 order-md-4">
+                <div class="col-sm-6 col-md-3 py-3">
+                    <img src="http://lorempixel.com/400/200/" class="taille" alt="">
+                </div>
+                <div class="col-sm-6 col-md-3 py-3">
+                    <img src="http://lorempixel.com/400/200/" class="taille" alt="">
+                </div>
+                <div class="col-sm-6 col-md-3 py-3">
+                    <img src="http://lorempixel.com/400/200/" class="taille" alt="">
+                </div>
+                <div class="col-sm-6 col-md-3 py-3">
+                    <img src="http://lorempixel.com/400/200/" class="taille" alt="">
+                </div>
+            </div>
+            <div class="row order-1 order-md-5">
+                <button class="btn btn-dark">Envoyer</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

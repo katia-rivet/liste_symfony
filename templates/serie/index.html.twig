@@ -11,6 +11,8 @@
                 <th scope="col">Saisons</th>
                 <th scope="col">Etat</th>
                 <th scope="col">Recommandation</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Streaming</th>
             </tr>
         </thead>
         {% for serie in listeDeSeries %}
@@ -35,6 +37,15 @@
                     <td>{{ serie.saisons }}</td>
                     <td>{{ serie.etat }}</td>
                     <td>{{ serie.recommandation }}</td>
+                    <td>{{ serie.author.fullName }}</td>
+                    <td><a href="{{ serie.lien }}"> {{ serie.site.nomSite }}</a></td>
+                    <td class="text-right">
+                        <div class="item-actions">
+                            <a href="{{ path('serie_show', {id: serie.id}) }}" class="btn btn-sm btn-default">
+                                <i class="fa fa-eye" aria-hidden="true"></i> {{ 'action.show'|trans }}
+                            </a>
+                        </div>
+                    </td>
 
                 </tr>
 

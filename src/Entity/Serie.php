@@ -94,7 +94,39 @@ class Serie
      */
     private $author;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $slug;
 
+    /**
+     * @var ImageSerie[]|ArrayCollection
+     *
+     * @ORM\OneToMany(
+     *      targetEntity="ImageSerie",
+     *      mappedBy="serie",
+     *      orphanRemoval=true,
+     *      cascade={"persist"}
+     * )
+     */
+    private $listeImages;
+
+    /**
+     * @var Stream
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Stream")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $site;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $lien;
 
 
 
@@ -167,7 +199,51 @@ class Serie
     {
         $this->author = $author;
     }
-//
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): void
+    {
+        $this->slug = $slug;
+    }
+
+    public function getListeImages()
+    {
+        if(!$this->listeImages) {
+            $this->listeImages = new ArrayCollection();
+        }
+        return $this->listeImages;
+    }
+
+    public function setListeImages($listeImages): void
+    {
+        $this->listeImages = $listeImages;
+    }
+
+    public function getSite(): ?Stream
+    {
+        return $this->site ;
+    }
+
+    public function setSite(string $lien): void
+    {
+        $this->lien = $lien;
+    }
+
+    public function getLien(): ?string
+    {
+        return $this->lien ;
+    }
+
+    public function setlien(string $lien): void
+    {
+        $this->lien = $lien;
+    }
+
+////
 //    public function getComments(): Collection
 //    {
 //        return $this->comments;

@@ -10,6 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>{% block title %}Symfony Demo application{% endblock %}</title>
         <link rel="alternate" type="application/rss+xml" title="{{ 'rss.title'|trans }}" href="{{ path('blog_rss') }}">
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -47,17 +48,22 @@
                                         </a>
                                     </li>
 
-                                    {% if is_granted('ROLE_ADMIN') %}
+                                    {% if not is_granted('ROLE_ADMIN') %}
                                         <li>
                                             <a href="{{ path('admin_serie_index') }}">
                                                 <i class="fa fa-lock" aria-hidden="true"></i> {{ 'menu.admin'|trans }}
                                             </a>
                                         </li>
+
+
                                     {% endif %}
                                 {% endblock %}
 
                                 <li>
-                                    {#<a href="{{ path('serie_search') }}"> <i class="fa fa-search"></i> {{ 'menu.search'|trans }}</a>#}
+                                    <a href="{{ path('serie_search') }}"> <i class="fa fa-search"></i> {{ 'menu.search'|trans }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('stream_index') }}">  Liste sites</a>
                                 </li>
 
                                 {% if app.user %}

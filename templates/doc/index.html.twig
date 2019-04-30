@@ -1,0 +1,183 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DocController!{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-4">
+    <h1>Table des Matières</h1>
+
+    <ul>
+        <li><a href="#AppliWeb">Application web et site web, Front et Back</a></li>
+        <li><a href="#techno">Technologies, serveur web, html et CSS</a></li>
+        <li><a href="#js">JavaScript (JS)</a></li>
+        <li><a href="#php">PHP, MySQL, BDD, CRUD, requêtes avancées, Frameworks et JQuery</a></li>
+        <li><a href="#bootstrap">Bootstrap, symfony et routing</a></li>
+        <li><a href="#vocab">Vocabulaire</a></li>
+    </ul>
+
+        </div>
+
+    <div class="col-md-8">
+    <h2 id="AppliWeb">Application Web et site web, Front et Back.</h2>
+    <br>
+    <h3>Application web et site web</h3>
+    <h4>Application de bureau :</h4>
+    installée sur l'ordinateur de l'utilisateur<br>
+    exemples : Word, Firefox, Thunderbird, explorateur Windows<br>
+    tous les fichiers nécessaires sont présents en local<br>
+    les mises à jour se font sur chaque ordinateur sur lequel le logiciel est installé<br>
+    <h4>Application Web :</h4>
+    installé sur un serveur : un ordinateur distant<br>
+    exemple : Gmail, banque en ligne, Facebook <br>
+    tous les fichiers sont sur le serveur ? et chargés dans le navigateur (Firefox, ...)<br>
+    les mises à jour se font uniquement sur le serveur<br>
+    <br>
+    <h3>Site Web</h3>
+    identique à une application Web-Mobile<br>
+    mais contient moins de logique car sert uniquement à faire de la présentation<br>
+    par exemple un blog<br>
+    De plus en plus d'applications Web ont aussi une variante mobile et desktop (de bureau) : par exemple LeBoncoin. Les données et les interfaces utilisateur (HTML etc) sont sur le serveur et l'application mobile va les chercher comme un navigateur web.<br>
+    <br>
+    <h3>Front-end</h3>
+    partie visible par les utilisateurs de l'application Web ? le rendu graphique<br>
+    résultat de l'interprétation par le navigateur des fichiers et données reçus : HTML, CSS, ...<br>
+    par exemple un site vitrine<br>
+    pas de notions d'utilisateur ou d'interaction avec l'application (sauf formulaire de contact)<br>
+    <h4>Front-office</h4>
+    utilise des comptes utilisateur pour interagir avec l'application<br>
+    par exemple l'interface de Gmail ou de la banque en ligne<br>
+    utilise le back-end pour exécuter les traitements<br>
+    <br>
+    <h3>Back</h3>
+    <h4>Back-office</h4>
+    c'est le front-office pour les administrateurs<br>
+    généralement on peut gérer les utilisateurs et les paramètres de l'application ici<br>
+    <h4>Back-end</h4>
+    partie "cachée" sur le serveur<br>
+    n'exécute que des traitements demandés depuis le front/back-office<br>
+    ne contient aucune interface destinée aux utilisateurs humains ? APIs<br>
+    <br>
+    <br>
+    <br>
+    <h2 id="techno">Technologies, serveur web, html et CSS</h2>
+    <br>
+    <h3>Serveur Web</h3>
+    C'est un logiciel installé sur le serveur physique qui permet de faire le lien entre les requêtes et les fonctionnalités de l'application.<br>
+    Par exemple, il génère les pages demandées lorsque le navigateur lui demande une adresse donnée.<br>
+    Le serveur Web utilise des modules logiciels pour exécuter les fonctionnalités, par exemple PHP.<br>
+    Le plus courant est Apache, suivi par Nginx.<br>
+    <br>
+    <h3>HTML</h3>
+    C'est le format de données permettant de structurer la présentation d'une page web affichée par un navigateur.<br>
+    Chaque "boîte" (élément du DOM) peut contenir d'autres "boîtes", par exemple une liste (ul/li) contient des blocs (div) qui contiennent du texte (p) et des liens (a).<br>
+    On peut agir sur ces éléments de deux manières :<br>
+    avec du CSS pour les mettre en forme : taille, couleur, bordures…<br>
+    avec du JavaScript pour les rendre dynamiques ? on peut interagir avec la page<br>
+    Pour agir sur les éléments, on peut les  identifier de trois manières :<br>
+    id : pour atteindre un seul élément, par exemple un bouton de formulaire<br>
+    class : pour un ensemble d'éléments, par exemple tous les liens de titre de blog<br>
+    absolu/relatif : pour désigner les éléments par rapport à d'autres, par exemple tous les liens présents après une image dans une liste<br>
+    En général, on ne met un id que sur les éléments sur lesquels on souhaite un comportement spécifique, par exemple une mise en valeur particulière d'un titre ou un comportement sur un bouton.<br>
+    <br>
+    <h3>CSS</h3>
+    Il permet de décrire l'aspect visuel des éléments présents dans le HTML.<br>
+    Le CSS est lu par le navigateur de haut en bas, et la dernière déclaration est celle retenue.<br>
+    La syntaxe est comme suit :<br>
+    pour les éléments cités ici {<br>
+    les mettre en page comme ceci<br>
+    }<br>
+    Exemple sur la page d'accueil de Google pour mettre en forme un bouton de menu ("élément unique" ? id ? # ) :<br>
+    Pour mettre en forme tous les titres des résultat de recherche ("toutes les balises" ? pas de . ou #) :<br>
+    Pour mettre en forme tous les liens internes d'un article sur Wikipedia ("tous ceux d'un type" ? class ? . ) :<br>
+    Il faut bien penser à mettre la class sur tous les éléments concernés !<br>
+    <br>
+    <br>
+    <br>
+    <h2 id="js">Javascript</h2>
+    <br>
+    C'est un langage de programmation permettant d'exécuter des actions dans le navigateur, par exemple en ajoutant des effets visuels ou des interactions avec l'utilisateur.<br>
+    Il permet d'agir à la fois sur la page affichée et avec un serveur, par exemple pour afficher des données.<br>
+    Les scripts JS peuvent être insérés dans les pages de deux manières :<br>
+    * soit directement à l'endroit de leur utilisation<br>
+    * soit par un lien vers le fichier JS contenant le code<br>
+    Le script sera exécuté dès sa lecture par le navigateur.<br>
+    Donc, afin de garantir le bon fonctionnement de vos scripts, assurez-vous qu'ils s'exécutent après la création des éléments sur lesquels vous agissez.<br>
+    Liens utiles :<br>
+    https://repl.it/languages/javascript pour tester du JS directement dans le navigateur<br>
+    https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript<br>
+    <br>
+    <br>
+    <br>
+    <h2 id="php">PHP, MySQL, BDD, CRUD, requêtes avancées, Frameworks et JQuery</h2>
+    <br>
+    <h3>PHP</h3>
+    C'est le langage utilisé par le serveur Web pour effectuer les traitements demandés et répondre aux requêtes.<br>
+    Ce qu'on peut faire avec PHP :<br>
+    * générer des pages HTML<br>
+    * interagir avec des bases de données<br>
+    * envoyer des emails<br>
+    * gérer des formulaires<br>
+    Liens utiles :<br>
+    <br>
+    <a href="https://www.cheatography.com/zetura/cheat-sheets/php-syntaxe-and-fondamentaux-fr/" target="_blank">cheatography</a><br>
+    <br>
+    1. MySQL<br>
+    1. Gestion des données<br>
+    2.  CRUD (INSERT, SELECT, UPDATE, DELETE)<br>
+    3.  Select, Jointures, requêtes avancées<br>
+    <br>
+    <h3>Frameworks</h3>
+    Les frameworks sont des grosses boîtes à outils permettant d’automatiser et de sécuriser beaucoup de fonctionnalités pénibles à écrire. On peut considérer que ce sont des outils indispensables aujourd’hui car ils permettent d’obtenir rapidement des systèmes fonctionnels en se concentrant sur la logique de l’application et non sur les détails.<br>
+    <br>
+    <h3>Jquery</h3>
+    jQuery est un framework permettant de faciliter le code et de le rendre portable : en effet, les différents navigateurs n’ont pas tous la même manière d’exécuter le code JavaScript.<br>
+    Beaucoup de fonctionnalités sont compliquées à faire en Javascript, par exemple les appels AJAX ou la gestion des événements (par exemple faire quelque chose quand on clique sur un bouton).<br>
+    C’est l’un des frameworks JS les plus utilisés et il est considéré comme un standard.<br>
+    Une variante spécialisée dans les interactions graphiques et animations existe : jQuery UI.<br>
+    Exemple d’un appel AJAX en JavaScript “brut” :<br>
+    <br>
+    Exemple avec jQuery :<br>
+    Liens utiles :<br>
+    <a href="https://jquery.com/" target="_blank">Jquery</a><br>
+    <a href="https://jqueryui.com/" target="_blank">JqueryUi</a><br>
+    <a href="https://jqueryui.com/demos/" target="_blank">JqueryUi Demo</a><br>
+    <a href="https://jqueryui.com/effect/" target="_blank">JqueryUi Effect</a><br>
+    <a href="https://htmlcheatsheet.com/jquery/" target="_blank">Html Cheat Sheet</a><br>
+    <br>
+    <br>
+    <br>
+    <h2 id="bootstrap">Bootstrap, symfony et routing</h2>
+    <br>
+    <h3> Bootstrap</h3>
+    <a href="http://user.oc-static.com/pdf/683140-prenez-en-main-bootstrap.pdf" target="_blank">Aide Bootstrap</a><br>
+    <h3> Symfony</h3>
+    C’est l’un des frameworks PHP les plus utilisés. Il permet de développer très rapidement des applications très fournies et automatise énormément de processus, comme la récupération des données depuis les requêtes ou retrouver la session de l’utilisateur connecté.<br>
+    Un tuto en français avec des explications à adapter :<br>
+    <a href="https://sites.google.com/site/symfonikhal/p2-les-bases-de-synfony/1-hello-world" target="_blank">les bases de symfony</a><br>
+    <h3>Les routes</h3>
+    <a href="https://symfony.com/doc/current/routing.html" target="_blank">Docs routing</a><br>
+    <br>
+    <br>
+    <br>
+    <h2 id="vocab">Vocabulaire</h2>
+    <br>
+    format de données(json, xml)<br>
+    Pattern HMVC, MVC<br>
+    Dev, preprod, prod<br>
+    POO<br>
+    classes et objects<br>
+    Outils<br>
+    JetBrains<br>
+    Git<br>
+    EN VRAC<br>
+    <a href="https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql" target="_blank">openclassroom php et mysql</a><br>
+    <a href="https://www.cheatography.com/mika56/cheat-sheets/symfony/" target="_blank">cheatography</a><br>
+    <a href="https://openclassrooms.com/fr/paths/48-developpeur-web-junior" target="_blank">openclassroom developpeur web junior </a><br>
+    <a href="http://devdocs.io" target="_blank">devdocs</a><br>
+    <a href="https://www.xp-internet.com/xp-infos/HTML-CSS-JavaScript-PHP-MySQL-petites-explications-des-technologies-Web.php" target="_blank">explications sur les techno</a><br>
+    <a href="https://websitesetup.org/wp-content/uploads/2018/06/wsu-php-cheat-sheet-pdf.pdf" target="_blank">php cheat sheet</a><br>
+    </div>
+    </div>
+{% endblock %}

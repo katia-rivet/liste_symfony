@@ -1,5 +1,6 @@
 <?php
 
+
 /*
  * This file is part of the Symfony package.
  *
@@ -11,7 +12,7 @@
 
 namespace App\Form;
 
-use App\Entity\Serie;
+use App\Entity\Stream;
 use App\Form\Type\DateTimePickerType;
 use App\Form\Type\TagsInputType;
 use Symfony\Component\Form\AbstractType;
@@ -27,7 +28,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  * @author Yonel Ceruto <yonelceruto@gmail.com>
  */
-class SerieType extends AbstractType
+class StreamType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -44,23 +45,10 @@ class SerieType extends AbstractType
         // $builder->add('title', null, ['required' => false, ...]);
 
         $builder
-            ->add('nom', null, [
+            ->add('nomSite', null, [
                 'attr' => ['autofocus' => true],
-                'label' => 'Nom'
-            ])
-            ->add('saisons', null, [
-                'label' => 'Saisons'
-            ])
-            ->add('etat', null, [
-                'label' => 'Etat'
-            ])
-            ->add('recommandation', null, [
-                'label' => 'Recommandation'
-            ])
-            ->add('listeImages', FileType::class,[
-                'multiple' => true
-            ])
-        ;
+                'label' => 'Site'
+            ]);
     }
 
     /**
@@ -69,7 +57,7 @@ class SerieType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Serie::class,
+            'data_class' => Stream::class,
         ]);
     }
 }
